@@ -21,7 +21,7 @@ func SetupContextForConn(ctx context.Context, conn net.Conn) (done func(*error))
 			<-stopc
 			if ctxErr := ctx.Err(); ctxErr != nil && inputErr != nil {
 				// Return context error to user.
-				inputErr = &ctxErr
+				*inputErr = ctxErr
 			}
 		}
 	}
